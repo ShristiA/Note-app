@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+      <link rel="shortcut icon" href="">
+    </head>
+    <body>
+      <h1>Notes App</h1>
+ 
+      <h2>Take the notes and never forget</h2>
+    <input type="text" id='searchText'placeholder='Filter notes'/>
+   <select id='filterBy'>
+     <option value= "byEdited">Sort by LastEdited</option>
+     <option value= "byCreated"> Sort by Recently created</option>
+     <option value= "alphabetical"> Sort Alphabetically</option>
+    </select>
+       <div id='notes'>
+       </div>
+           <button id='create'>Create note</button>
+           <!-- <form id='nameForm'>
+            <input type= 'text' placeholder="firstName" name="firstName">
+            <button>Submit</button> 
+          </form> -->
+        
+      
+    </body>
+    <script src="uuidfile.js"></script>
+    <script src="notes-functions.js">
+    </script>
+    <script src = "notes-app.js"></script>
+    
+     
+</html>
