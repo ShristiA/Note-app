@@ -1,6 +1,6 @@
 //read exisiting notes from local storage
 
-console.log(uuidv4())
+// console.log(uuidv4())
 
 let getsavednotes = function(){
    
@@ -30,7 +30,7 @@ const removeNote = function(id){
 
 const generateNoteDom = function(note){
     let noteEl = document.createElement('div')
-    const textEl =document.createElement('span')
+    const textEl =document.createElement('a')
     const button = document.createElement('button')
    
 //setup the remove note button
@@ -39,7 +39,7 @@ const generateNoteDom = function(note){
 
 button.addEventListener('click', function(e){
    removeNote(note.id)
-   saveNotes
+   saveNotes(notes)
    renderNotes(notes, filters)
 })
     //setup the note item button
@@ -49,6 +49,7 @@ button.addEventListener('click', function(e){
     } else {
       textEl.textContent = "Unnamed notes"
     }
+    textEl.setAttribute('href',`/edit.html#${note.id}`)
      noteEl.appendChild(textEl)
     return noteEl
 }
