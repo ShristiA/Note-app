@@ -2,7 +2,8 @@
 let notes = getsavednotes()
 
 const filters = {
-   searchText: ''
+   searchText: '',
+   sortBy: 'byEdited'
 }
 var newfilteredNotes = '';
 
@@ -10,15 +11,20 @@ var newfilteredNotes = '';
 
 renderNotes(notes, filters)
 
-
+// const timeStamp = moment.valueOf(); // it gives the number back
+// console.log(timeStamp)
+const timeStamp = moment().valueOf();
 document.querySelector('#create').addEventListener('click', function (e) {
    //   e.target.textContent = 'The button was clicked'
    const id=uuidv4(); 
+   
    notes.push({
       
       id: id,
       title:"" ,
-      body:""
+      body:"",
+      createdAt: timeStamp,
+      updatedAt: timeStamp
    })
    saveNotes(notes);
       
@@ -32,7 +38,8 @@ document.querySelector('#searchText').addEventListener('input', function (e) {
 })
 
 document.querySelector('#filterBy').addEventListener('change', function (e) {
-   console.log(e.target.value)
+  filters.sortBy = e.target.value
+  renderNotes(notes, filters)
 })
 
 window.addEventListener('storage', function(e){
@@ -42,6 +49,6 @@ window.addEventListener('storage', function(e){
       notes = JSON.parse(e.newValue)
       renderNotes(notes, filters)
 
-
    }
 })
+
